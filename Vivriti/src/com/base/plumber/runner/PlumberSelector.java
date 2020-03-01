@@ -41,7 +41,6 @@ public class PlumberSelector extends BaseFunction {
 	@AfterTest
 	public void quitDriver() {
 		driver.quit();
-
 	}
 
 }
