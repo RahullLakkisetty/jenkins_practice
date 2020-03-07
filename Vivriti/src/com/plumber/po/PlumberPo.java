@@ -43,7 +43,7 @@ public class PlumberPo extends BaseFunction {
 	@FindBy(xpath = "//div[contains(text(),'On a specific date')]")
 	private WebElement whenOption;
 
-	@FindBy(xpath = "//button[text()='25' and contains(@aria-label, 'February')]")
+	@FindBy(xpath = "//button[text()='25' and contains(@aria-label, 'March')]")
 	private WebElement date;
 
 	@FindBy(xpath = "//select[@data-test='step_time']")

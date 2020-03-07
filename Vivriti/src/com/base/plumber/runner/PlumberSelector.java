@@ -11,6 +11,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
 import com.plumber.po.PlumberPo;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 
 
@@ -18,6 +21,17 @@ public class PlumberSelector extends BaseFunction {
 
 	private static WebDriver driver = null;
 	public static PlumberPo plumber;
+	static ExtentTest test;
+	static ExtentReports report;
+	
+	@BeforeClass
+	public static void startTest()
+	{
+	report = new ExtentReports(System.getProperty("user.dir")+"/ExtentReportResults.html");
+	System.out.println(System.getProperty("user.dir")+"/ExtentReportResults.html");
+
+	test = report.startTest("PlumberSelector");
+	}
 
 	@BeforeTest
 	public void intializeDriver() throws IOException {
@@ -36,11 +50,28 @@ public class PlumberSelector extends BaseFunction {
 	public void plumberAutomate() throws IOException {
 		plumber = new PlumberPo(driver);
 		String data = plumber.automate();
+		System.out.println(data);
+			
+		if(data.equals("The 10 best Plumbers in Putlibowli, Hyderabad - Last Updated February 2020 - StarOfService"))
+		{
+		test.log(LogStatus.PASS, "Navigated to the specified URL");
+		}
+		else
+		{
+		test.log(LogStatus.FAIL, "Test Failed");
+		}
 	}
 
 	@AfterTest
 	public void quitDriver() {
 		driver.quit();
+	}
+	
+	@AfterClass
+	public static void endTest()
+	{
+	report.endTest(test);
+	report.flush();
 	}
 
 }
