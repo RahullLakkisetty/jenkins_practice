@@ -52,7 +52,7 @@ public class PlumberSelector extends BaseFunction {
 		String data = plumber.automate();
 		System.out.println(data);
 			
-		if(data.equals("The 10 best Plumbers in Putlibowli, Hyderabad - Last Updated February 2020 - StarOfService"))
+		if(data.equals("The 10 best Plumbers in Putlibowli, Hyderabad - Last Updated February 2020 - StarOfServicee"))
 		{
 		test.log(LogStatus.PASS, "Navigated to the specified URL");
 		}
