@@ -28,7 +28,6 @@ public class PlumberSelector extends BaseFunction {
 	public static void startTest()
 	{
 	report = new ExtentReports(System.getProperty("user.dir")+"/ExtentReportResults.html");
-	System.out.println(System.getProperty("user.dir")+"/ExtentReportResults.html");
 
 	test = report.startTest("PlumberSelector");
 	}
@@ -63,15 +62,17 @@ public class PlumberSelector extends BaseFunction {
 	}
 
 	@AfterTest
-	public void quitDriver() {
-		driver.quit();
+	public void closeDriver() {
+		driver.close();
+		report.endTest(test);
+		report.flush();
 	}
 	
 	@AfterClass
-	public static void endTest()
+	public void quitDriver()
 	{
-	report.endTest(test);
-	report.flush();
+		driver.quit();
 	}
+	
 
 }
