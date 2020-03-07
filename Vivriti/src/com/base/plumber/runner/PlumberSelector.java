@@ -63,14 +63,9 @@ public class PlumberSelector extends BaseFunction {
 
 	@AfterTest
 	public void closeDriver() {
-		driver.close();
+		driver.quit();
 		report.endTest(test);
 		report.flush();
-	}
-	
-	@AfterClass
-	public void quitDriver() {
-		driver.quit();
 	}
 	
 
